@@ -1,0 +1,21 @@
+{% extends 'qrcodeapp/base.html' %}
+{% load tailwind_filters %}
+{% block title %} About {% endblock %}
+{% block content %}
+<div class="grid justify-items-center">
+    <form action="" method="post">
+        {% csrf_token %}
+        <p>Generate QR code below:</p>
+        {{form | crispy}}
+        <br>
+        <input type="text" name="data" id=""><br><br>
+        <button type="submit" class="btn bg-cyan-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full flex items-center">Generate!</button>
+    </form>
+    <div class="qr-img">
+        {% if img_name %}
+            <img src="media/{{img_name}}" alt="qr code">
+        {% endif %}
+    </div>
+</div>
+
+{% endblock %}
